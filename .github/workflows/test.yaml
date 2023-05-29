@@ -1,0 +1,10 @@
+name: Lint and Test
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test-python-poetry:
+    uses: radiorabe/actions/.github/workflows/test-python-poetry.yaml@v0.11.1

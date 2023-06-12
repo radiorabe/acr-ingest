@@ -17,3 +17,5 @@ jobs:
       display-name: Ingest daily ACRCloud data dumps
       tags: minimal rhel9 ubi9 rabe minio kafka cloudevents acrcloud
       cosign-base-image-only: false
+  mkdocs:
+    uses: radiorabe/actions/.github/workflows/release-mkdocs.yaml@v0.13.0

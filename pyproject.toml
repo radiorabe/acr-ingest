@@ -17,6 +17,7 @@ ConfigArgParse = "^1.5.3"
 kafka-python = "^2.0.2"
 minio = "^7.1.15"
 jsondiff = "^2.0.0"
+cachecontrol = "^0.13.1"
 
 [tool.poetry.group.dev.dependencies]
 black = "^23.3.0"
@@ -33,7 +34,7 @@ profile = "black"
 
 [tool.pytest.ini_options]
 minversion = "7.2"
-addopts = "-ra -q --random-order --doctest-glob='*.md' --doctest-modules --cov=acringest --cov-fail-under=100 --ruff --isort"
+addopts = "-ra -q --random-order --doctest-glob='*.md' --doctest-modules --cov=acringest --cov-fail-under=100 --ruff --isort --ignore docs/"
 
 [build-system]
 requires = ["poetry-core"]

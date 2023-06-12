@@ -192,7 +192,7 @@ def app(
                     changes = diff(minio_data, music)
                     if changes:
                         put_data(mc, minio_bucket_music, acrid, json.dumps(music))
-                        logger.info(f"Applied changes {changes}")
+                        logger.info(f"Applied changes to {acrid=}: {changes}")
 
 
 def main():  # pragma: no cover

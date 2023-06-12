@@ -8,7 +8,7 @@ Run the container to see all available configuration options and their
 corresponding environment variables.
 
 ```bash
-podman run --rm ghcr.io/radiorabe/acringest:latest --help
+podman run --rm ghcr.io/radiorabe/acringest:latest acringest --help
 ```
 
 ## Development

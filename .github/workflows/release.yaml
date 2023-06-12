@@ -10,10 +10,12 @@ on:
 
 jobs:
   release-container:
-    uses: radiorabe/actions/.github/workflows/release-container.yaml@v0.11.1
+    uses: radiorabe/actions/.github/workflows/release-container.yaml@v0.13.1
     with:
       image: ghcr.io/radiorabe/acringest
       name: acringest
       display-name: Ingest daily ACRCloud data dumps
       tags: minimal rhel9 ubi9 rabe minio kafka cloudevents acrcloud
       cosign-base-image-only: false
+  mkdocs:
+    uses: radiorabe/actions/.github/workflows/release-mkdocs.yaml@v0.13.1

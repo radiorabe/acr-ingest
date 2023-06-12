@@ -1,0 +1,25 @@
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: acr-ingest
+  title: ACR Ingest
+  description: |
+    Takes care of ingesting daily ACRCloud Broadcast Monitoring data dumps.
+  annotations:
+    backstage.io/techdocs-ref: dir:.
+    github.com/project-slug: radiorabe/acr-ingest
+  links:
+    - url: https://minio.service.int.rabe.ch/browser/acrcloud.music
+      title: MinIO Raw Bucket
+    - url: https://minio.service.int.rabe.ch/browser/acrcloud.music
+      title: MinIO Music Bucket
+spec:
+  type: service
+  lifecycle: experimental
+  owner: it-reaktion
+  dependsOn:
+    - component:default/python-minimal
+    - component:default/s2i-python-minimal
+    - component:default/minio
+    - component:default/kafka

@@ -23,3 +23,5 @@ spec:
     - component:default/s2i-python-minimal
     - component:default/minio
     - component:default/kafka
+  consumesApi:
+    - minio-cloudevents-api

@@ -21,7 +21,7 @@ cachecontrol = "^0.13.1"
 
 [tool.poetry.group.dev.dependencies]
 black = "^23.10.1"
-pytest = "^7.4.2"
+pytest = "^7.4.3"
 pytest-cov = "^4.0.0"
 pytest-random-order = "^1.1.0"
 pytest-ruff = "^0.1"

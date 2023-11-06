@@ -15,7 +15,7 @@ python = "^3.11"
 cloudevents = "^1.10.1"
 ConfigArgParse = "^1.7"
 kafka-python = "^2.0.2"
-minio = "^7.1.16"
+minio = "^7.1.17"
 jsondiff = "^2.0.0"
 cachecontrol = "^0.13.1"
 

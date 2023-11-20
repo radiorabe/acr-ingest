@@ -25,7 +25,7 @@ pytest = "^7.4.3"
 pytest-cov = "^4.0.0"
 pytest-random-order = "^1.1.0"
 pytest-ruff = "^0.2"
-ruff = "^0.1.5"
+ruff = "^0.1.6"
 isort = "^5.12.0"
 pytest-isort = "^3.1.0"
 

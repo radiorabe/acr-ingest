@@ -7,4 +7,4 @@ on:
 
 jobs:
   test-python-poetry:
-    uses: radiorabe/actions/.github/workflows/test-python-poetry.yaml@v0.17.2
+    uses: radiorabe/actions/.github/workflows/test-python-poetry.yaml@v0.18.0

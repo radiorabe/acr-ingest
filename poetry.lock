@@ -486,20 +486,21 @@ crc32c = ["crc32c"]
 
 [[package]]
 name = "minio"
-version = "7.2.0"
+version = "7.2.2"
 description = "MinIO Python SDK for Amazon S3 Compatible Cloud Storage"
 optional = false
 python-versions = "*"
 files = [
-    {file = "minio-7.2.0-py3-none-any.whl", hash = "sha256:10656272c16156fa08436ce2b27e25e4134ef5142a8c259513ee26fb514531a6"},
-    {file = "minio-7.2.0.tar.gz", hash = "sha256:4b015b018d10c1505f7c3e724fa7c2267760ac7bee6463a624cbf22cd272877b"},
+    {file = "minio-7.2.2-py3-none-any.whl", hash = "sha256:3c50a5ff5cded4472c8196ad5deadbfaf6601d6aad88b9694953349e475d276a"},
+    {file = "minio-7.2.2.tar.gz", hash = "sha256:7ed4e08825fdd395dbc934f5178a41b0db04afeaa54504728d2e6621791ab96b"},
 ]
 
 [package.dependencies]
 argon2-cffi = "*"
 certifi = "*"
 pycryptodome = "*"
-urllib3 = "*"
+typing-extensions = "*"
+urllib3 = ">=2.0"
 
 [[package]]
 name = "msgpack"
@@ -817,6 +818,17 @@ files = [
 ]
 
 [[package]]
+name = "typing-extensions"
+version = "4.9.0"
+description = "Backported and Experimental Type Hints for Python 3.8+"
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "typing_extensions-4.9.0-py3-none-any.whl", hash = "sha256:af72aea155e91adfc61c3ae9e0e342dbc0cba726d6cba4b6c72c1f34e47291cd"},
+    {file = "typing_extensions-4.9.0.tar.gz", hash = "sha256:23478f88c37f27d76ac8aee6c905017a143b0b1b886c3c9f66bc2fd94f9f5783"},
+]
+
+[[package]]
 name = "urllib3"
 version = "2.0.7"
 description = "HTTP library with thread-safe connection pooling, file post, and more."
@@ -836,4 +848,4 @@ zstd = ["zstandard (>=0.18.0)"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "6f856292ce45996df7048d901a7aa7ecaac1b6157ffdd71f8f77535242b22f91"
+content-hash = "862ddd91d6b4e666592e475f9042037f35aed6cb6db5a9c0b0b251791d7d2605"

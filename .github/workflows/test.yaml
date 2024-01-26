@@ -8,3 +8,5 @@ on:
 jobs:
   test-python-poetry:
     uses: radiorabe/actions/.github/workflows/test-python-poetry.yaml@v0.20.3
+  pre-commit:
+    uses: radiorabe/actions/.github/workflows/test-pre-commit.yaml@v0.20.3

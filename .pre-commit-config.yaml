@@ -1,13 +1,7 @@
 repos:
-  - repo: https://github.com/asottile/pyupgrade
-    rev: v2.31.1
-    hooks:
-      - id: pyupgrade
-        args:
-          - --py311-plus
   - repo: https://github.com/charliermarsh/ruff-pre-commit
     # Ruff version.
-    rev: "v0.0.269"
+    rev: "v0.2.0"
     hooks:
       - id: ruff
         args: [--fix, --exit-non-zero-on-fix]
@@ -24,7 +18,7 @@ repos:
         entry: black
         types: [python]
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.4.0
+    rev: v4.5.0
     hooks:
       - id: trailing-whitespace
         exclude: ^src/api/client.js$

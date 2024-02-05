@@ -17,7 +17,7 @@ ConfigArgParse = "^1.7"
 kafka-python = "^2.0.2"
 minio = "^7.2.3"
 jsondiff = "^2.0.0"
-cachecontrol = "^0.13.1"
+cachecontrol = "^0.14.0"
 
 [tool.poetry.group.dev.dependencies]
 black = "^24.1.1"

@@ -20,7 +20,7 @@ jsondiff = "^2.0.0"
 
 [tool.poetry.group.dev.dependencies]
 black = "^24.2.0"
-pytest = "^8.0.0"
+pytest = "^8.0.1"
 pytest-cov = "^4.0.0"
 pytest-random-order = "^1.1.1"
 pytest-ruff = "^0.2"

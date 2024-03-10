@@ -1,9 +1,9 @@
 from datetime import datetime
 from unittest.mock import ANY, patch
 
+import pytest
 from cloudevents.http import CloudEvent
-from kafka.consumer.fetcher import ConsumerRecord
-from pytest import mark
+from kafka.consumer.fetcher import ConsumerRecord  # type: ignore[import-untyped]
 
 from acringest import app, put_data
 
@@ -21,43 +21,40 @@ def test_put_data(mc_client):
     )
 
 
-@mark.parametrize(
-    "event,expected",
+@pytest.mark.parametrize(
+    "event",
     [
-        (
-            CloudEvent(
-                {
-                    "id": "x-amz-request-id.x-amz-id-2",
-                    "source": "minio:s3..acrcloud.raw",
-                    "specversion": "1.0",
-                    "type": "com.amazonaws.s3.s3:ObjectCreated:Put",
-                    "datacontenttype": "application/json",
-                    "subject": "objectkey",
-                    "time": "eventtime",
+        CloudEvent(
+            {
+                "id": "x-amz-request-id.x-amz-id-2",
+                "source": "minio:s3..acrcloud.raw",
+                "specversion": "1.0",
+                "type": "com.amazonaws.s3.s3:ObjectCreated:Put",
+                "datacontenttype": "application/json",
+                "subject": "objectkey",
+                "time": "eventtime",
+            },
+            {
+                "responseElements": {
+                    "x-amz-request-id": "x-amz-request-id",
+                    "x-amz-id-2": "x-amz-id-2",
                 },
-                {
-                    "responseElements": {
-                        "x-amz-request-id": "x-amz-request-id",
-                        "x-amz-id-2": "x-amz-id-2",
-                    },
-                    "eventSource": "eventsource",
-                    "awsRegion": "",
-                    "s3": {
-                        "bucket": {"name": "bucketname"},
-                        "object": {"key": "objectkey"},
-                    },
-                    "eventName": "eventname",
-                    "eventTime": "eventtime",
+                "eventSource": "eventsource",
+                "awsRegion": "",
+                "s3": {
+                    "bucket": {"name": "bucketname"},
+                    "object": {"key": "objectkey"},
                 },
-            ),
-            {},
-        )
+                "eventName": "eventname",
+                "eventTime": "eventtime",
+            },
+        ),
     ],
 )
 @patch("acringest.Minio")
 @patch("acringest.from_structured")
 @patch("acringest.KafkaConsumer")
-def test_app(mock_consumer, mock_from_structured, mc_client, event, expected):
+def test_app(mock_consumer, mock_from_structured, mc_client, event):
     mock_consumer.side_effect = lambda *_, **__: [
         ConsumerRecord(
             topic="test",
@@ -72,7 +69,7 @@ def test_app(mock_consumer, mock_from_structured, mc_client, event, expected):
             serialized_key_size=0,
             serialized_value_size=0,
             serialized_header_size=0,
-        )
+        ),
     ]
     mock_from_structured.return_value = event
     mc_client.return_value = mc_client
@@ -84,10 +81,10 @@ def test_app(mock_consumer, mock_from_structured, mc_client, event, expected):
                     {
                         "acrid": "acrid",
                         "163": "ignored",
-                    }
-                ]
-            }
-        }
+                    },
+                ],
+            },
+        },
     ]
     app(
         bootstrap_servers="server:9092",
@@ -108,5 +105,9 @@ def test_app(mock_consumer, mock_from_structured, mc_client, event, expected):
         minio_ca_certs="",
     )
     mc_client.put_object.assert_called_once_with(
-        "music", "acrid", ANY, length=18, content_type="application/json"
+        "music",
+        "acrid",
+        ANY,
+        length=18,
+        content_type="application/json",
     )

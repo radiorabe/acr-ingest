@@ -1,17 +1,25 @@
+"""Extract data from loaded ACRCloud records."""
+
+from __future__ import annotations
+
 import json
 import logging
 import signal
 import sys
 from io import BytesIO
+from typing import TYPE_CHECKING, Any, NoReturn
 
 import urllib3
 from cloudevents.kafka import from_structured
 from cloudevents.kafka.conversion import KafkaMessage
-from configargparse import ArgumentParser
-from jsondiff import diff
-from kafka import KafkaConsumer
+from configargparse import ArgumentParser  # type: ignore[import-untyped]
+from jsondiff import diff  # type: ignore[import-untyped]
+from kafka import KafkaConsumer  # type: ignore[import-untyped]
 from minio import Minio
 from minio.error import S3Error
+
+if TYPE_CHECKING:  # pragma: no cover
+    from cloudevents.http import CloudEvent
 
 logger = logging.getLogger(__name__)
 
@@ -71,7 +79,8 @@ _ACR_IGNORED_KEYS = [
     "rights_claim",
     "release_by_territories",
     "langs",
-] + _ACR_INVALID_KEYS
+    *_ACR_INVALID_KEYS,
+]
 """
 These keys are part of a music entry but not relevant for our purposes.
 """
@@ -93,13 +102,15 @@ _ACR_EXPECTED_KEYS = [
     "bpm",
     "exids",
     "works",
-] + _ACR_IGNORED_KEYS
+    *_ACR_IGNORED_KEYS,
+]
 """
 All keys not in this list are a surprise and warrant further investigation.
 """
 
 
-def put_data(mc: Minio, bucket: str, acrid: str, data: str):
+def put_data(mc: Minio, bucket: str, acrid: str, data: str) -> None:
+    """Put data to MinIO."""
     _as_bytes = data.encode("utf-8")
     mc.put_object(
         bucket,
@@ -110,7 +121,7 @@ def put_data(mc: Minio, bucket: str, acrid: str, data: str):
     )
 
 
-def app(  # noqa: PLR0912,PLR0913
+def app(  # noqa: PLR0912,PLR0913,C901
     bootstrap_servers: list[str],
     security_protocol: str,
     tls_cafile: str,
@@ -124,10 +135,11 @@ def app(  # noqa: PLR0912,PLR0913
     minio_secret_key: str,
     minio_bucket_raw: str,
     minio_bucket_music: str,
-    minio_secure: bool,
+    minio_secure: bool,  # noqa: FBT001
     minio_cert_reqs: str,
     minio_ca_certs: str,
-):
+) -> None:
+    """Consume MinIO CloudEvents and create deduped and historized objects."""
     consumer = KafkaConsumer(
         consumer_topic,
         bootstrap_servers=bootstrap_servers,
@@ -139,7 +151,7 @@ def app(  # noqa: PLR0912,PLR0913
         ssl_keyfile=tls_keyfile,
     )
 
-    def on_sigint(*_):  # pragma: no cover
+    def on_sigint(*_: Any) -> NoReturn:  # noqa: ANN401 # pragma: no cover
         consumer.close()
         sys.exit(0)
 
@@ -151,7 +163,8 @@ def app(  # noqa: PLR0912,PLR0913
         minio_secret_key,
         secure=minio_secure,
         http_client=urllib3.PoolManager(
-            cert_reqs=minio_cert_reqs, ca_certs=minio_ca_certs
+            cert_reqs=minio_cert_reqs,
+            ca_certs=minio_ca_certs,
         ),
     )
     for bucket in [minio_bucket_raw, minio_bucket_music]:
@@ -159,12 +172,12 @@ def app(  # noqa: PLR0912,PLR0913
             mc.make_bucket(bucket)
 
     for msg in consumer:
-        ce = from_structured(
+        ce: CloudEvent = from_structured(
             message=KafkaMessage(
                 key=msg.key,
                 value=msg.value,
                 headers=msg.headers if msg.headers else {},
-            )
+            ),
         )
         if (
             ce["source"] == "minio:s3..acrcloud.raw"
@@ -178,9 +191,9 @@ def app(  # noqa: PLR0912,PLR0913
                     acrid = music.get("acrid")
                     for key in list(music.keys()):
                         if key not in _ACR_EXPECTED_KEYS:  # pragma: no cover
-                            logger.error(f"Unexpected key {key} in acr results")
+                            logger.error("Unexpected key %s in acr results", key)
                     for to_del in _ACR_IGNORED_KEYS:
-                        if to_del in music.keys():
+                        if to_del in music:
                             del music[to_del]
                     minio_data = None
                     try:
@@ -192,10 +205,11 @@ def app(  # noqa: PLR0912,PLR0913
                     changes = diff(minio_data, music)
                     if changes:
                         put_data(mc, minio_bucket_music, acrid, json.dumps(music))
-                        logger.info(f"Applied changes to {acrid=}: {changes}")
+                        logger.info("Applied changes to acrid=%s: %s", acrid, changes)
 
 
-def main():  # pragma: no cover
+def main() -> None:  # pragma: no cover
+    """Run main."""
     parser = ArgumentParser(__name__)
     parser.add(
         "--kafka-bootstrap-servers",
@@ -286,14 +300,18 @@ def main():  # pragma: no cover
         help="MinIO Secret Key",
     )
     parser.add(
-        "--quiet", "-q", default=False, action="store_true", env_var="ACRINGEST_QUIET"
+        "--quiet",
+        "-q",
+        default=False,
+        action="store_true",
+        env_var="ACRINGEST_QUIET",
     )
 
     options = parser.parse_args()
 
     if not options.quiet:
         logging.basicConfig(level=logging.INFO)
-    logger.info(f"Starting {__name__}...")
+    logger.info("Starting %s", __name__)
 
     app(
         bootstrap_servers=options.kafka_bootstrap_servers,

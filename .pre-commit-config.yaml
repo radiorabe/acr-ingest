@@ -1,15 +1,10 @@
 repos:
-  - repo: local
-    hooks:
-      - id: black
-        name: black
-        language: system
-        entry: black
-        types: [python]
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: 'v0.3.2'
+    rev: 'v0.4.2'
     hooks:
       - id: ruff
+        args: [--fix]
+      - id: ruff-format
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.5.0
     hooks:

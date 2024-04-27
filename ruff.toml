@@ -1,53 +1,5 @@
 [lint]
-select = [
-	"F",     # pyflakes
-	"E",     # pycodestyle errors
-	"I",     # isort
-	"C90",   # mccabe
-	"N",     # pep8-naming
-	"D",     # pydocstyle
-	"UP",    # pyupgrade
-	"ANN",   # flake8-annotations
-	"ASYNC", # flake8-async
-	"S",     # flake8-bandit
-	"BLE",   # flake8-blind-exception
-	"FBT",   # flake8-boolean-trap
-	"B",     # flake8-bugbear
-	"A",     # flake8-builtins
-	"COM",   # flake8-commas
-	"C4",    # flake8-comprehensions
-	"DTZ",   # flake8-datetimez
-	"T10",   # flake8-debugger
-	"EM",    # flake8-errmsg
-	"EXE",   # flake8-executable
-        "FA",    # flake8-future-annotations
-	"ISC",   # flake8-implicit-str-concat
-	"ICN",   # flake8-import-conventions
-        "G",     # flake8-logging-format
-	"INP",   # flake8-no-pep420
-	"PIE",   # flake8-pie
-	"T20",   # flake8-print
-	"PYI",   # flake8-pyi
-	"PT",    # flake8-pytest-style
-	"Q",     # flake8-quotes
-	"RSE",   # flake8-raise
-	"RET",   # flake8-return
-	"SLF",   # flake8-self
-	"SLOT",  # flake8-slots
-        "SIM",   # flake8-simplify
-	"TID",   # flake8-tidy-imports
-	"TCH",   # flake8-type-checking
-	"INT",   # flake8-gettext
-	"ARG",   # flake8-unused-arguments
-	"PTH",   # flake8-use-pathlib
-	"TD",    # flake8-todos
-	"ERA",   # eradicate
-	"PGH",   # pygrep-hooks
-	"PL",    # Pylint
-	"TRY",   # tryceratops
-	"PERF",  # Perflint
-	"RUF",   # ruff specific rules
-]
+select = ["ALL"]
 ignore = [
 	"D203",
 	"D213",

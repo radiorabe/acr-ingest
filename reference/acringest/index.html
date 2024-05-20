@@ -14,7 +14,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.21">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.24">
     
     
       
@@ -22,7 +22,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.66ac8b77.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.6543a935.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
@@ -430,14 +430,13 @@
 
 
 <a id="acringest"></a>
-  <div class="doc doc-contents first">
-  
+    <div class="doc doc-contents first">
+
       <p>Extract data from loaded ACRCloud records.</p>
 
-  
+
 
   <div class="doc doc-children">
-
 
 
 
@@ -450,20 +449,19 @@
 <div class="doc doc-object doc-function">
 
 
-
 <h2 id="acringest.app" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">app</span><span class="p">(</span><span class="n">bootstrap_servers</span><span class="p">,</span> <span class="n">security_protocol</span><span class="p">,</span> <span class="n">tls_cafile</span><span class="p">,</span> <span class="n">tls_certfile</span><span class="p">,</span> <span class="n">tls_keyfile</span><span class="p">,</span> <span class="n">consumer_topic</span><span class="p">,</span> <span class="n">consumer_group</span><span class="p">,</span> <span class="n">consumer_auto_offset_reset</span><span class="p">,</span> <span class="n">minio_url</span><span class="p">,</span> <span class="n">minio_access_key</span><span class="p">,</span> <span class="n">minio_secret_key</span><span class="p">,</span> <span class="n">minio_bucket_raw</span><span class="p">,</span> <span class="n">minio_bucket_music</span><span class="p">,</span> <span class="n">minio_secure</span><span class="p">,</span> <span class="n">minio_cert_reqs</span><span class="p">,</span> <span class="n">minio_ca_certs</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">app</span><span class="p">(</span><span class="n">bootstrap_servers</span><span class="p">,</span> <span class="n">security_protocol</span><span class="p">,</span> <span class="n">tls_cafile</span><span class="p">,</span> <span class="n">tls_certfile</span><span class="p">,</span> <span class="n">tls_keyfile</span><span class="p">,</span> <span class="n">consumer_topic</span><span class="p">,</span> <span class="n">consumer_group</span><span class="p">,</span> <span class="n">consumer_auto_offset_reset</span><span class="p">,</span> <span class="n">minio_url</span><span class="p">,</span> <span class="n">minio_access_key</span><span class="p">,</span> <span class="n">minio_secret_key</span><span class="p">,</span> <span class="n">minio_bucket_raw</span><span class="p">,</span> <span class="n">minio_bucket_music</span><span class="p">,</span> <span class="n">minio_secure</span><span class="p">,</span> <span class="n">minio_cert_reqs</span><span class="p">,</span> <span class="n">minio_ca_certs</span><span class="p">)</span></code>
 
 </h2>
 
 
-  <div class="doc doc-contents ">
-  
+    <div class="doc doc-contents ">
+
       <p>Consume MinIO CloudEvents and create deduped and historized objects.</p>
 
-          <details class="quote">
-            <summary>Source code in <code>acringest.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-124">124</a></span>
+            <details class="quote">
+              <summary>Source code in <code>acringest.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-124">124</a></span>
 <span class="normal"><a href="#__codelineno-0-125">125</a></span>
 <span class="normal"><a href="#__codelineno-0-126">126</a></span>
 <span class="normal"><a href="#__codelineno-0-127">127</a></span>
@@ -633,29 +631,27 @@
 <a id="__codelineno-0-207" name="__codelineno-0-207"></a>                        <span class="n">put_data</span><span class="p">(</span><span class="n">mc</span><span class="p">,</span> <span class="n">minio_bucket_music</span><span class="p">,</span> <span class="n">acrid</span><span class="p">,</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">music</span><span class="p">))</span>
 <a id="__codelineno-0-208" name="__codelineno-0-208"></a>                        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Applied changes to acrid=</span><span class="si">%s</span><span class="s2">: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">acrid</span><span class="p">,</span> <span class="n">changes</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div>
-
 
 <div class="doc doc-object doc-function">
 
 
-
 <h2 id="acringest.main" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">main</span><span class="p">()</span></code>
+            <code class="highlight language-python"><span class="n">main</span><span class="p">()</span></code>
 
 </h2>
 
 
-  <div class="doc doc-contents ">
-  
+    <div class="doc doc-contents ">
+
       <p>Run main.</p>
 
-          <details class="quote">
-            <summary>Source code in <code>acringest.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-211">211</a></span>
+            <details class="quote">
+              <summary>Source code in <code>acringest.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-211">211</a></span>
 <span class="normal"><a href="#__codelineno-0-212">212</a></span>
 <span class="normal"><a href="#__codelineno-0-213">213</a></span>
 <span class="normal"><a href="#__codelineno-0-214">214</a></span>
@@ -901,29 +897,27 @@
 <a id="__codelineno-0-332" name="__codelineno-0-332"></a>        <span class="n">minio_ca_certs</span><span class="o">=</span><span class="n">options</span><span class="o">.</span><span class="n">minio_ca_certs</span><span class="p">,</span>
 <a id="__codelineno-0-333" name="__codelineno-0-333"></a>    <span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div>
-
 
 <div class="doc doc-object doc-function">
 
 
-
 <h2 id="acringest.put_data" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">put_data</span><span class="p">(</span><span class="n">mc</span><span class="p">,</span> <span class="n">bucket</span><span class="p">,</span> <span class="n">acrid</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">put_data</span><span class="p">(</span><span class="n">mc</span><span class="p">,</span> <span class="n">bucket</span><span class="p">,</span> <span class="n">acrid</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span></code>
 
 </h2>
 
 
-  <div class="doc doc-contents ">
-  
+    <div class="doc doc-contents ">
+
       <p>Put data to MinIO.</p>
 
-          <details class="quote">
-            <summary>Source code in <code>acringest.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-112">112</a></span>
+            <details class="quote">
+              <summary>Source code in <code>acringest.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-112">112</a></span>
 <span class="normal"><a href="#__codelineno-0-113">113</a></span>
 <span class="normal"><a href="#__codelineno-0-114">114</a></span>
 <span class="normal"><a href="#__codelineno-0-115">115</a></span>
@@ -943,8 +937,8 @@
 <a id="__codelineno-0-120" name="__codelineno-0-120"></a>        <span class="n">content_type</span><span class="o">=</span><span class="s2">&quot;application/json&quot;</span><span class="p">,</span>
 <a id="__codelineno-0-121" name="__codelineno-0-121"></a>    <span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-          </details>
-  </div>
+            </details>
+    </div>
 
 </div>
 
@@ -952,7 +946,7 @@
 
   </div>
 
-  </div>
+    </div>
 
 </div>
 
@@ -1004,7 +998,7 @@
     <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "toc.integrate"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.a7c05c9e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.081f42fc.min.js"></script>
       
     
   </body>

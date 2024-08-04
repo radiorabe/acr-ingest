@@ -16,7 +16,7 @@ cloudevents = "^1.11.0"
 ConfigArgParse = "^1.7"
 kafka-python-ng = "^2.2.2"
 minio = "^7.2.7"
-jsondiff = "^2.1.2"
+jsondiff = "^2.2.0"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.3.2"

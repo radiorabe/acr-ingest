@@ -301,13 +301,13 @@ files = [
 
 [[package]]
 name = "jsondiff"
-version = "2.2.0"
+version = "2.2.1"
 description = "Diff JSON and JSON-like structures in Python"
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "jsondiff-2.2.0-py3-none-any.whl", hash = "sha256:afff7c0067d934e3f2730935dc3abd520ab7d09021c88d3a9f4272e7d2229a1e"},
-    {file = "jsondiff-2.2.0.tar.gz", hash = "sha256:060e9a10fe136c643e9d2bf264ea1fbe966ed17d2fd37348dd65b1c650c2df4f"},
+    {file = "jsondiff-2.2.1-py3-none-any.whl", hash = "sha256:b1f0f7e2421881848b1d556d541ac01a91680cfcc14f51a9b62cdf4da0e56722"},
+    {file = "jsondiff-2.2.1.tar.gz", hash = "sha256:658d162c8a86ba86de26303cd86a7b37e1b2c1ec98b569a60e2ca6180545f7fe"},
 ]
 
 [package.dependencies]
@@ -689,4 +689,4 @@ zstd = ["zstandard (>=0.18.0)"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "9a41468bca9c0c7c0d67bf8cc08a6f7fc9b56f33b73edd1f35e9152e489e63ff"
+content-hash = "71c5c5c4b95a0125daebf088f53d1467a759e39365920419f2f9f8a5e8e8c9aa"

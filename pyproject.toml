@@ -14,7 +14,7 @@ acringest = 'acringest:main'
 python = "^3.11"
 cloudevents = "^1.11.0"
 ConfigArgParse = "^1.7"
-kafka-python-ng = "^2.2.2"
+kafka-python-ng = "^2.2.3"
 minio = "^7.2.9"
 jsondiff = "^2.2.1"
 

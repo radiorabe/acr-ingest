@@ -306,11 +306,20 @@ def main() -> None:  # pragma: no cover
         action="store_true",
         env_var="ACRINGEST_QUIET",
     )
+    parser.add(
+        "--debug",
+        "-d",
+        default=False,
+        action="store_true",
+        env_var="ACRINGEST_DEBUG",
+    )
 
     options = parser.parse_args()
 
     if not options.quiet:
         logging.basicConfig(level=logging.INFO)
+    if options.debug:
+        logging.basicConfig(level=logging.DEBUG)
     logger.info("Starting %s", __name__)
 
     app(

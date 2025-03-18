@@ -14,7 +14,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.8">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.9">
     
     
       
@@ -22,7 +22,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.8608ea7d.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.4af4bdda.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
@@ -367,33 +367,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#acringest._ACR_EXPECTED_KEYS" class="md-nav__link">
-    <span class="md-ellipsis">
-      _ACR_EXPECTED_KEYS
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#acringest._ACR_IGNORED_KEYS" class="md-nav__link">
-    <span class="md-ellipsis">
-      _ACR_IGNORED_KEYS
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#acringest._ACR_INVALID_KEYS" class="md-nav__link">
-    <span class="md-ellipsis">
-      _ACR_INVALID_KEYS
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#acringest.app" class="md-nav__link">
     <span class="md-ellipsis">
       app
@@ -481,72 +454,6 @@
 
 
 
-
-<div class="doc doc-object doc-attribute">
-
-
-
-<h2 id="acringest._ACR_EXPECTED_KEYS" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">_ACR_EXPECTED_KEYS</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;album&#39;</span><span class="p">,</span> <span class="s1">&#39;title&#39;</span><span class="p">,</span> <span class="s1">&#39;source&#39;</span><span class="p">,</span> <span class="s1">&#39;release_date&#39;</span><span class="p">,</span> <span class="s1">&#39;genres&#39;</span><span class="p">,</span> <span class="s1">&#39;label&#39;</span><span class="p">,</span> <span class="s1">&#39;artists&#39;</span><span class="p">,</span> <span class="s1">&#39;external_ids&#39;</span><span class="p">,</span> <span class="s1">&#39;acrid&#39;</span><span class="p">,</span> <span class="s1">&#39;external_metadata&#39;</span><span class="p">,</span> <span class="s1">&#39;language&#39;</span><span class="p">,</span> <span class="s1">&#39;contributors&#39;</span><span class="p">,</span> <span class="s1">&#39;lyrics&#39;</span><span class="p">,</span> <span class="s1">&#39;bpm&#39;</span><span class="p">,</span> <span class="s1">&#39;exids&#39;</span><span class="p">,</span> <span class="s1">&#39;works&#39;</span><span class="p">,</span> <span class="o">*</span><span class="n">_ACR_IGNORED_KEYS</span><span class="p">]</span></code>
-
-  <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-module-attribute"><code>module-attribute</code></small>
-  </span>
-
-</h2>
-
-
-    <div class="doc doc-contents ">
-
-        <p>All keys not in this list are a surprise and warrant further investigation.</p>
-
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-attribute">
-
-
-
-<h2 id="acringest._ACR_IGNORED_KEYS" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">_ACR_IGNORED_KEYS</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;play_offset_ms&#39;</span><span class="p">,</span> <span class="s1">&#39;sample_begin_time_offset_ms&#39;</span><span class="p">,</span> <span class="s1">&#39;sample_end_time_offset_ms&#39;</span><span class="p">,</span> <span class="s1">&#39;db_begin_time_offset_ms&#39;</span><span class="p">,</span> <span class="s1">&#39;db_end_time_offset_ms&#39;</span><span class="p">,</span> <span class="s1">&#39;duration_ms&#39;</span><span class="p">,</span> <span class="s1">&#39;rec_times&#39;</span><span class="p">,</span> <span class="s1">&#39;result_from&#39;</span><span class="p">,</span> <span class="s1">&#39;base_score&#39;</span><span class="p">,</span> <span class="s1">&#39;score&#39;</span><span class="p">,</span> <span class="s1">&#39;ppm&#39;</span><span class="p">,</span> <span class="s1">&#39;rights_claim_policy&#39;</span><span class="p">,</span> <span class="s1">&#39;rights_claim&#39;</span><span class="p">,</span> <span class="s1">&#39;release_by_territories&#39;</span><span class="p">,</span> <span class="s1">&#39;langs&#39;</span><span class="p">,</span> <span class="o">*</span><span class="n">_ACR_INVALID_KEYS</span><span class="p">]</span></code>
-
-  <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-module-attribute"><code>module-attribute</code></small>
-  </span>
-
-</h2>
-
-
-    <div class="doc doc-contents ">
-
-        <p>These keys are part of a music entry but not relevant for our purposes.</p>
-
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-attribute">
-
-
-
-<h2 id="acringest._ACR_INVALID_KEYS" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">_ACR_INVALID_KEYS</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;163&#39;</span><span class="p">,</span> <span class="s1">&#39;nct&#39;</span><span class="p">,</span> <span class="s1">&#39;amco&#39;</span><span class="p">,</span> <span class="s1">&#39;andyou&#39;</span><span class="p">,</span> <span class="s1">&#39;anghami&#39;</span><span class="p">,</span> <span class="s1">&#39;artstis&#39;</span><span class="p">,</span> <span class="s1">&#39;awa&#39;</span><span class="p">,</span> <span class="s1">&#39;base_score&#39;</span><span class="p">,</span> <span class="s1">&#39;bugs&#39;</span><span class="p">,</span> <span class="s1">&#39;deezer&#39;</span><span class="p">,</span> <span class="s1">&#39;disco_3453684&#39;</span><span class="p">,</span> <span class="s1">&#39;joox&#39;</span><span class="p">,</span> <span class="s1">&#39;kkbox&#39;</span><span class="p">,</span> <span class="s1">&#39;lyricfind&#39;</span><span class="p">,</span> <span class="s1">&#39;merlin&#39;</span><span class="p">,</span> <span class="s1">&#39;musicbrainz&#39;</span><span class="p">,</span> <span class="s1">&#39;musicstory&#39;</span><span class="p">,</span> <span class="s1">&#39;mwg&#39;</span><span class="p">,</span> <span class="s1">&#39;nct&#39;</span><span class="p">,</span> <span class="s1">&#39;omusic&#39;</span><span class="p">,</span> <span class="s1">&#39;partner&#39;</span><span class="p">,</span> <span class="s1">&#39;partners&#39;</span><span class="p">,</span> <span class="s1">&#39;qqmusic&#39;</span><span class="p">,</span> <span class="s1">&#39;rec_times&#39;</span><span class="p">,</span> <span class="s1">&#39;rights_owners&#39;</span><span class="p">,</span> <span class="s1">&#39;sme&#39;</span><span class="p">,</span> <span class="s1">&#39;Soundcharts&#39;</span><span class="p">,</span> <span class="s1">&#39;spotify&#39;</span><span class="p">,</span> <span class="s1">&#39;trackitdown&#39;</span><span class="p">,</span> <span class="s1">&#39;umg&#39;</span><span class="p">,</span> <span class="s1">&#39;wmg&#39;</span><span class="p">,</span> <span class="s1">&#39;works_ids&#39;</span><span class="p">,</span> <span class="s1">&#39;youtube&#39;</span><span class="p">,</span> <span class="s1">&#39;updated_at&#39;</span><span class="p">]</span></code>
-
-  <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-module-attribute"><code>module-attribute</code></small>
-  </span>
-
-</h2>
-
-
-    <div class="doc doc-contents ">
-
-        <p>These keys were empirically found based on our date.</p>
-
-    </div>
-
-</div>
 
 
 

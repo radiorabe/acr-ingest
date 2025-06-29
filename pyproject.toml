@@ -22,7 +22,7 @@ jsondiff = "^2.2.1"
 pytest = "^8.4.1"
 pytest-cov = "^6.2.1"
 pytest-mypy = "^1.0.1"
-pytest-random-order = "^1.1.1"
+pytest-random-order = "^1.2.0"
 pytest-ruff = "^0.5"
 ruff = "^0.12.1"
 

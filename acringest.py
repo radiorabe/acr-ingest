@@ -15,8 +15,8 @@ from cloudevents.kafka.conversion import KafkaMessage
 from configargparse import ArgumentParser  # type: ignore[import-untyped]
 from jsondiff import diff  # type: ignore[import-untyped]
 from kafka import KafkaConsumer  # type: ignore[import-untyped]
-from minio import Minio
-from minio.error import S3Error
+from minio import Minio  # type: ignore[import-untyped]
+from minio.error import S3Error  # type: ignore[import-untyped]
 
 if TYPE_CHECKING:  # pragma: no cover
     from cloudevents.http import CloudEvent

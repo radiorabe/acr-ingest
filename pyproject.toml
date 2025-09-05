@@ -19,7 +19,7 @@ minio = "^7.2.16"
 jsondiff = "^2.2.1"
 
 [tool.poetry.group.dev.dependencies]
-pytest = "^8.4.1"
+pytest = "^8.4.2"
 pytest-cov = "^6.2.1"
 pytest-mypy = "^1.0.1"
 pytest-random-order = "^1.2.0"

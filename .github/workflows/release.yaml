@@ -18,4 +18,4 @@ jobs:
       tags: minimal rhel9 ubi9 rabe minio kafka cloudevents acrcloud
       cosign-base-image-only: false
   mkdocs:
-    uses: radiorabe/actions/.github/workflows/release-mkdocs.yaml@v0.38.1
+    uses: radiorabe/actions/.github/workflows/release-mkdocs.yaml@v0.38.3

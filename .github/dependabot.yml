@@ -1,23 +1,26 @@
 version: 2
 updates:
-  - package-ecosystem: "docker"
-    directory: "/"
+  - package-ecosystem: docker
+    directory: /
     schedule:
-      interval: "daily"
+      interval: daily
     commit-message:
-      prefix: "feat: "
+      prefix: "chore: "
     groups:
       baseimages:
         patterns:
           - "*"
-  - package-ecosystem: "github-actions"
-    directory: "/"
+  - package-ecosystem: github-actions
+    directory: /
     schedule:
-      interval: "daily"
+      interval: daily
     commit-message:
       prefix: "chore(ci): "
-    open-pull-requests-limit: 10
+    groups:
+      actions:
+        patterns:
+          - "*"
   - package-ecosystem: pip
-    directory: "/"
+    directory: /
     schedule:
-      interval: "daily"
+      interval: daily

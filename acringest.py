@@ -102,6 +102,7 @@ _ACR_EXPECTED_KEYS = [
     "bpm",
     "exids",
     "works",
+    "distributors",
     *_ACR_IGNORED_KEYS,
 ]
 """

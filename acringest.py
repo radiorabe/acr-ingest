@@ -173,7 +173,7 @@ def app(  # noqa: PLR0912,PLR0913,C901
             mc.make_bucket(bucket)
 
     for msg in consumer:
-        headers: list[tuple[str, bytes]] = msg.headers if msg.headers else []
+        headers: list[tuple[str, bytes]] = msg.headers or []
         ce: CloudEvent = from_structured(
             message=KafkaMessage(
                 key=msg.key,

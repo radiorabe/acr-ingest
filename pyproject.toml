@@ -12,7 +12,7 @@ acringest = 'acringest:main'
 
 [tool.poetry.dependencies]
 python = "^3.11"
-cloudevents = "^1.12.1"
+cloudevents = "^2.0.0"
 ConfigArgParse = "^1.7"
 kafka-python-ng = "^2.2.3"
 minio = "^7.2.20"

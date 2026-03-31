@@ -7,11 +7,10 @@ import logging
 import signal
 import sys
 from io import BytesIO
-from typing import TYPE_CHECKING, Any, NoReturn
+from typing import TYPE_CHECKING, Any, NoReturn, cast
 
 import urllib3
-from cloudevents.kafka import from_structured
-from cloudevents.kafka.conversion import KafkaMessage
+from cloudevents.core.bindings.kafka import KafkaMessage, from_kafka_event
 from configargparse import ArgumentParser  # type: ignore[import-untyped]
 from jsondiff import diff  # type: ignore[import-untyped]
 from kafka import KafkaConsumer  # type: ignore[import-untyped]
@@ -19,7 +18,7 @@ from minio import Minio  # type: ignore[import-untyped]
 from minio.error import S3Error  # type: ignore[import-untyped]
 
 if TYPE_CHECKING:  # pragma: no cover
-    from cloudevents.http import CloudEvent
+    from cloudevents.core.base import BaseCloudEvent
 
 logger = logging.getLogger(__name__)
 
@@ -174,19 +173,20 @@ def app(  # noqa: PLR0912,PLR0913,C901
 
     for msg in consumer:
         headers: list[tuple[str, bytes]] = msg.headers or []
-        ce: CloudEvent = from_structured(
-            message=KafkaMessage(
+        ce: BaseCloudEvent = from_kafka_event(
+            KafkaMessage(
                 key=msg.key,
                 value=msg.value,
                 headers={h[0]: h[1] for h in headers},
             ),
         )
         if (
-            ce["source"] == "minio:s3..acrcloud.raw"
-            and ce["type"] == "com.amazonaws.s3.s3:ObjectCreated:Put"
+            ce.get_source() == "minio:s3..acrcloud.raw"
+            and ce.get_type() == "com.amazonaws.s3.s3:ObjectCreated:Put"
         ):
-            bucket = ce.data.get("s3", {}).get("bucket", {}).get("name")
-            name = ce.data.get("s3", {}).get("object", {}).get("key")
+            ce_data = cast("dict[str, Any]", ce.get_data())
+            bucket = ce_data.get("s3", {}).get("bucket", {}).get("name")
+            name = ce_data.get("s3", {}).get("object", {}).get("key")
             obj = mc.get_object(bucket, name)
             for data in obj.json():
                 for music in data.get("metadata", {}).get("music", []):

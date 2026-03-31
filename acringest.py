@@ -7,7 +7,7 @@ import logging
 import signal
 import sys
 from io import BytesIO
-from typing import TYPE_CHECKING, Any, NoReturn
+from typing import TYPE_CHECKING, Any, NoReturn, cast
 
 import urllib3
 from cloudevents.core.bindings.kafka import KafkaMessage, from_kafka_event
@@ -18,7 +18,7 @@ from minio import Minio  # type: ignore[import-untyped]
 from minio.error import S3Error  # type: ignore[import-untyped]
 
 if TYPE_CHECKING:  # pragma: no cover
-    from cloudevents.core.v1.event import CloudEvent
+    from cloudevents.core.base import BaseCloudEvent
 
 logger = logging.getLogger(__name__)
 
@@ -173,7 +173,7 @@ def app(  # noqa: PLR0912,PLR0913,C901
 
     for msg in consumer:
         headers: list[tuple[str, bytes]] = msg.headers or []
-        ce: CloudEvent = from_kafka_event(
+        ce: BaseCloudEvent = from_kafka_event(
             KafkaMessage(
                 key=msg.key,
                 value=msg.value,
@@ -184,8 +184,9 @@ def app(  # noqa: PLR0912,PLR0913,C901
             ce.get_source() == "minio:s3..acrcloud.raw"
             and ce.get_type() == "com.amazonaws.s3.s3:ObjectCreated:Put"
         ):
-            bucket = ce.get_data().get("s3", {}).get("bucket", {}).get("name")
-            name = ce.get_data().get("s3", {}).get("object", {}).get("key")
+            ce_data = cast("dict[str, Any]", ce.get_data())
+            bucket = ce_data.get("s3", {}).get("bucket", {}).get("name")
+            name = ce_data.get("s3", {}).get("object", {}).get("key")
             obj = mc.get_object(bucket, name)
             for data in obj.json():
                 for music in data.get("metadata", {}).get("music", []):

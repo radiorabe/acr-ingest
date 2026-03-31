@@ -1,8 +1,8 @@
-from datetime import datetime
+from datetime import datetime, timezone
 from unittest.mock import ANY, patch
 
 import pytest
-from cloudevents.http import CloudEvent
+from cloudevents.core.v1.event import CloudEvent
 from kafka.consumer.fetcher import ConsumerRecord  # type: ignore[import-untyped]
 
 from acringest import app, put_data
@@ -25,16 +25,16 @@ def test_put_data(mc_client):
     "event",
     [
         CloudEvent(
-            {
+            attributes={
                 "id": "x-amz-request-id.x-amz-id-2",
                 "source": "minio:s3..acrcloud.raw",
                 "specversion": "1.0",
                 "type": "com.amazonaws.s3.s3:ObjectCreated:Put",
                 "datacontenttype": "application/json",
                 "subject": "objectkey",
-                "time": "eventtime",
+                "time": datetime(1993, 3, 1, tzinfo=timezone.utc),
             },
-            {
+            data={
                 "responseElements": {
                     "x-amz-request-id": "x-amz-request-id",
                     "x-amz-id-2": "x-amz-id-2",
@@ -52,9 +52,9 @@ def test_put_data(mc_client):
     ],
 )
 @patch("acringest.Minio")
-@patch("acringest.from_structured")
+@patch("acringest.from_kafka_event")
 @patch("acringest.KafkaConsumer")
-def test_app(mock_consumer, mock_from_structured, mc_client, event):
+def test_app(mock_consumer, mock_from_kafka_event, mc_client, event):
     mock_consumer.side_effect = lambda *_, **__: [
         ConsumerRecord(
             topic="test",
@@ -71,7 +71,7 @@ def test_app(mock_consumer, mock_from_structured, mc_client, event):
             serialized_header_size=0,
         ),
     ]
-    mock_from_structured.return_value = event
+    mock_from_kafka_event.return_value = event
     mc_client.return_value = mc_client
     mc_client.get_object.return_value = mc_client
     mc_client.json.return_value = [

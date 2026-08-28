@@ -121,7 +121,7 @@ def put_data(mc: Minio, bucket: str, acrid: str, data: str) -> None:
     )
 
 
-def app(  # noqa: PLR0912,PLR0913,C901
+def app(  # noqa: PLR0912,PLR0913,C901,PLR0917
     bootstrap_servers: list[str],
     security_protocol: str,
     tls_cafile: str,
